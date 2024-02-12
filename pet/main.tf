@@ -24,7 +24,7 @@ resource "random_pet" "this" {
 }
 
 resource "null_resource" "owner" {
-  provisioner "local-exec" {
+  provisioner "remote-exec" {
     command = "echo \"hello world\""
   }
 
