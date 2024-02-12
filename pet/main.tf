@@ -29,7 +29,7 @@ resource "null_resource" "owner" {
   }
 
   triggers = {
-    pet = random_pet.this
+    pet = random_pet.this.id
   }
 }
 
