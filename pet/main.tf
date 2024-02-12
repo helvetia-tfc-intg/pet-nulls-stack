@@ -3,8 +3,12 @@
 
 terraform {
   required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.1.1"
+    }
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.3.2"
     }
   }
@@ -17,6 +21,16 @@ variable "prefix" {
 resource "random_pet" "this" {
   prefix = var.prefix
   length = 3
+}
+
+resource "null_resource" "owner" {
+  provisionner {
+    local_exec = "echo \"hello world\""
+  }
+
+  triggers = {
+    pet = random_pet.this
+  }
 }
 
 output "name" {
