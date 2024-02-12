@@ -24,8 +24,8 @@ resource "random_pet" "this" {
 }
 
 resource "null_resource" "owner" {
-  provisioner {
-    local_exec = "echo \"hello world\""
+  provisioner "local-exec" {
+    command = "echo \"hello world\""
   }
 
   triggers = {
