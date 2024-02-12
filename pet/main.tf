@@ -24,10 +24,6 @@ resource "random_pet" "this" {
 }
 
 resource "null_resource" "owner" {
-  provisioner "remote-exec" {
-    command = "echo \"hello world\""
-  }
-
   triggers = {
     pet = random_pet.this.id
   }
